@@ -874,6 +874,22 @@ footer {
     font-size: 0.95rem;
   }
 
+  .btn-scrow-prev {
+    opacity: 1;
+    position: relative;
+    bottom: 23rem;
+    font-size: x-small;
+    left: 5rem;
+  }
+
+  .btn-scrow-next {
+    opacity: 1;
+    position: relative;
+    bottom: 23rem;
+    font-size: x-small;
+    left: 43rem;
+  }
+
   .about-content,
   .skills-content,
   .contact-content {

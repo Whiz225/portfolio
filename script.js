@@ -1,3 +1,5 @@
+// import { skillsData } from "./skillsData");
+
 // Mobile Navigation
 const hamburger = document.querySelector(".hamburger");
 const navLinks = document.querySelector(".nav-links");
@@ -23,6 +25,7 @@ window.addEventListener("scroll", () => {
   const header = document.querySelector("header");
   header.classList.toggle("scrolled", window.scrollY > 0);
 });
+
 
 const skillsData = [
   {
@@ -67,6 +70,7 @@ const skillsData = [
     "Testing & Quality": [{ skill: "ESLint & Prettier", percent: 80 }],
   },
 ];
+
 
 let buttonClick = 1;
 
