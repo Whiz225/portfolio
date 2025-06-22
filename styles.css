@@ -781,6 +781,136 @@ footer {
 }
 
 @media (max-width: 576px) {
+  .body-container,
+  .container {
+    margin: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+    margin-bottom: 30px;
+  }
+
+  .hero {
+    padding: 2rem 1rem;
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text {
+    padding: 0;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .hero-text h2 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+
+  .hero-buttons .btn {
+    display: block;
+    width: 90%;
+    margin: 0.5rem auto;
+    font-size: 0.95rem;
+  }
+
+  .about-content,
+  .skills-content,
+  .contact-content {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .skills-content {
+    height: auto;
+    padding: 1rem;
+  }
+
+  .skills-column {
+    max-width: 100%;
+  }
+
+  .skill-info {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .img {
+    width: 9rem;
+    height: 9rem;
+  }
+
+  .project-card {
+    font-size: 0.95rem;
+  }
+
+  .project-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .project-info p {
+    font-size: 1rem;
+  }
+
+  .project-links {
+    flex-direction: column;
+  }
+
+  .project-links .btn {
+    width: 100%;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1rem;
+  }
+
+  .btn-scrow-prev,
+  .btn-scrow-next {
+    bottom: 20rem;
+    left: 2rem;
+    font-size: xx-small;
+  }
+
+  .btn-scrow-next {
+    left: auto;
+    right: 2rem;
+  }
+
+  .nav-links {
+    padding: 2rem 1rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 0.9rem;
+  }
+
+  .contact-item {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+  }
+}
+
+/*
+@media (max-width: 576px) {
   .hero-text h1 {
     font-size: 2rem;
   }
@@ -803,6 +933,7 @@ footer {
     width: 100%;
   }
 }
+*/
 
 /* .img {
   width: 12rem;
