@@ -2,6 +2,9 @@
 const hamburger = document.querySelector(".hamburger");
 const navLinks = document.querySelector(".nav-links");
 const links = document.querySelectorAll(".nav-links li");
+const skillsContent = document.querySelector(".skills-content");
+const prevBtn = document.querySelector(".btn-scrow-prev");
+const nextBtn = document.querySelector(".btn-scrow-next");
 
 hamburger.addEventListener("click", () => {
   navLinks.classList.toggle("active");
@@ -20,6 +23,151 @@ window.addEventListener("scroll", () => {
   const header = document.querySelector("header");
   header.classList.toggle("scrolled", window.scrollY > 0);
 });
+
+const skillsData = [
+  {
+    Frontend: [
+      {
+        skill: "HTML5/CSS3/Tailwind CSS/Styled-components/CSS Modules",
+        percent: 90,
+      },
+      { skill: "JavaScript (ES6+)/ TypeScript", percent: 90 },
+      { skill: "React.js/ React Query", percent: 90 },
+      { skill: "Next.js", percent: 85 },
+      { skill: "Vite", percent: 80 },
+      { skill: "Pug (Template Engine", percent: 75 },
+    ],
+  },
+  {
+    Backend: [
+      { skill: "Node.js", percent: 85 },
+      { skill: "Express.js", percent: 85 },
+      { skill: "RESTful APIs", percent: 90 },
+    ],
+  },
+  {
+    "Database & DevOPs Tools": [
+      { skill: "MongoDB (Atlas)", percent: 85 },
+      { skill: "Mongoose", percent: 85 },
+      { skill: "Github", percent: 90 },
+      { skill: "Vercel", percent: 90 },
+      { skill: "Postman", percent: 80 },
+      { skill: "Netlify", percent: 80 },
+      { skill: "Render", percent: 85 },
+      { skill: "Heroku", percent: 80 },
+    ],
+  },
+  {
+    "Cloud & Other Tools": [
+      { skill: "VS Code", percent: 90 },
+      { skill: "Figma", percent: 80 },
+    ],
+  },
+  {
+    "Testing & Quality": [{ skill: "ESLint & Prettier", percent: 80 }],
+  },
+];
+
+let buttonClick = 1;
+
+function skills(countClick) {
+  let count = countClick;
+  console.log(count);
+  if (countClick > skillsData.length) count = skillsData.length;
+
+  const htmlArray = Array.from({ length: count }).map((_, num) => {
+    console.log(Object.entries(skillsData[num]).flat(1));
+    const [keys, values] = Object.entries(skillsData[num]).flat(1);
+
+    const html = values.map(
+      (el) => `<div class="skill-item">
+      <div class="skill-info">
+      <span>${el.skill}</span>
+      <span>${el.percent}%</span>
+      </div>
+      <div class="progress-bar">
+      <div class="progress" style="width: ${el.percent}%"></div>
+      </div>
+      </div>`
+    );
+
+    const htmlContent = `<div class="skills-column">
+  <h3>${keys}</h3>
+  ${html.join(" ")}
+  </div>`;
+
+    console.log("aaa", count - (num + 1));
+
+    if (screen.width <= 992 && count - (num + 1) < 1) return htmlContent;
+    if (screen.width > 992 && count - (num + 1) < 2) return htmlContent;
+  });
+
+  skillsContent.innerHTML = htmlArray.join(" ");
+
+  console.log(skillsContent);
+  console.log(screen.width);
+  console.log(window.innerWidth);
+}
+
+function toggleForSmallScreen() {
+  if (buttonClick >= skillsData.length) nextBtn.style.opacity = 0;
+  if (buttonClick < skillsData.length) nextBtn.style.opacity = 1;
+  if (buttonClick <= 1) prevBtn.style.opacity = 0;
+  if (buttonClick > 1) prevBtn.style.opacity = 1;
+}
+
+function toggleForBigScreen() {
+  console.log(buttonClick, skillsData.length);
+  if (buttonClick + 1 >= skillsData.length) nextBtn.style.opacity = 0;
+  if (buttonClick < skillsData.length) nextBtn.style.opacity = 1;
+  if (buttonClick <= 2) prevBtn.style.opacity = 0;
+  if (buttonClick > 2) prevBtn.style.opacity = 1;
+}
+
+(() => {
+  if (screen.width <= 992) {
+    skills(buttonClick);
+    toggleForSmallScreen();
+  }
+})();
+
+(() => {
+  if (screen.width > 992) {
+    buttonClick++;
+    skills(buttonClick);
+    toggleForBigScreen();
+  }
+})();
+
+if (prevBtn && nextBtn) {
+  if (screen.width <= 992) {
+    nextBtn.addEventListener("click", () => {
+      buttonClick++;
+      skills(buttonClick);
+      toggleForSmallScreen();
+    });
+
+    prevBtn.addEventListener("click", () => {
+      buttonClick--;
+      skills(buttonClick);
+      toggleForSmallScreen();
+    });
+  }
+
+  if (screen.width > 992) {
+    nextBtn.addEventListener("click", () => {
+      buttonClick += 2;
+      skills(buttonClick);
+      toggleForBigScreen();
+    });
+
+    prevBtn.addEventListener("click", () => {
+      buttonClick -= 2;
+      skills(buttonClick);
+      toggleForBigScreen();
+    });
+  }
+}
 
 // Smooth Scrolling for Anchor Links
 // document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
