@@ -1,4 +1,5 @@
-// import { skillsData } from "./skillsData");
+import { projectData } from "./projectData.js";
+import { skillsData } from "./skillsData.js";
 
 // Mobile Navigation
 const hamburger = document.querySelector(".hamburger");
@@ -7,6 +8,9 @@ const links = document.querySelectorAll(".nav-links li");
 const skillsContent = document.querySelector(".skills-content");
 const prevBtn = document.querySelector(".btn-scrow-prev");
 const nextBtn = document.querySelector(".btn-scrow-next");
+const projectContent = document.querySelector(".projects-grid");
+const prevProjectBtn = document.querySelector(".btn-project-prev");
+const nextProjectBtn = document.querySelector(".btn-project-next");
 
 hamburger.addEventListener("click", () => {
   navLinks.classList.toggle("active");
@@ -26,53 +30,7 @@ window.addEventListener("scroll", () => {
   header.classList.toggle("scrolled", window.scrollY > 0);
 });
 
-
-const skillsData = [
-  {
-    Frontend: [
-      {
-        skill: "HTML5/CSS3/Tailwind CSS/Styled-components/CSS Modules",
-        percent: 90,
-      },
-      { skill: "JavaScript (ES6+)/ TypeScript", percent: 90 },
-      { skill: "React.js/ React Query", percent: 90 },
-      { skill: "Next.js", percent: 85 },
-      { skill: "Vite", percent: 80 },
-      { skill: "Pug (Template Engine", percent: 75 },
-    ],
-  },
-  {
-    Backend: [
-      { skill: "Node.js", percent: 85 },
-      { skill: "Express.js", percent: 85 },
-      { skill: "RESTful APIs", percent: 90 },
-    ],
-  },
-  {
-    "Database & DevOPs Tools": [
-      { skill: "MongoDB (Atlas)", percent: 85 },
-      { skill: "Mongoose", percent: 85 },
-      { skill: "Github", percent: 90 },
-      { skill: "Vercel", percent: 90 },
-      { skill: "Postman", percent: 80 },
-      { skill: "Netlify", percent: 80 },
-      { skill: "Render", percent: 85 },
-      { skill: "Heroku", percent: 80 },
-    ],
-  },
-  {
-    "Cloud & Other Tools": [
-      { skill: "VS Code", percent: 90 },
-      { skill: "Figma", percent: 80 },
-    ],
-  },
-  {
-    "Testing & Quality": [{ skill: "ESLint & Prettier", percent: 80 }],
-  },
-];
-
-
-let buttonClick = 1;
+let buttonClick = 0;
 
 function skills(countClick) {
   let count = countClick;
@@ -114,22 +72,49 @@ function skills(countClick) {
 }
 
 function toggleForSmallScreen() {
-  if (buttonClick >= skillsData.length) nextBtn.style.opacity = 0;
-  if (buttonClick < skillsData.length) nextBtn.style.opacity = 1;
-  if (buttonClick <= 1) prevBtn.style.opacity = 0;
-  if (buttonClick > 1) prevBtn.style.opacity = 1;
+  if (buttonClick >= skillsData.length) {
+    nextBtn.style.opacity = 0;
+    nextBtn.disabled = true;
+  }
+  if (buttonClick < skillsData.length) {
+    nextBtn.style.opacity = 1;
+    nextBtn.disabled = false;
+  }
+  if (buttonClick <= 1) {
+    prevBtn.style.opacity = 0;
+    prevBtn.disabled = true;
+  }
+  if (buttonClick > 1) {
+    prevBtn.style.opacity = 1;
+    prevBtn.disabled = false;
+  }
 }
 
 function toggleForBigScreen() {
   console.log(buttonClick, skillsData.length);
-  if (buttonClick + 1 >= skillsData.length) nextBtn.style.opacity = 0;
-  if (buttonClick < skillsData.length) nextBtn.style.opacity = 1;
-  if (buttonClick <= 2) prevBtn.style.opacity = 0;
-  if (buttonClick > 2) prevBtn.style.opacity = 1;
+  if (buttonClick + 1 >= skillsData.length) {
+    nextBtn.style.opacity = 0;
+    nextBtn.disabled = true;
+  }
+
+  if (buttonClick < skillsData.length) {
+    nextBtn.style.opacity = 1;
+    nextBtn.disabled = false;
+  }
+  if (buttonClick <= 2) {
+    prevBtn.style.opacity = 0;
+    prevBtn.disabled = true;
+  }
+  if (buttonClick > 2) {
+    prevBtn.style.opacity = 1;
+    prevBtn.disabled = false;
+  }
 }
 
 (() => {
   if (screen.width <= 992) {
+    console.log("AA");
+    buttonClick++;
     skills(buttonClick);
     toggleForSmallScreen();
   }
@@ -137,7 +122,8 @@ function toggleForBigScreen() {
 
 (() => {
   if (screen.width > 992) {
-    buttonClick++;
+    console.log("BB");
+    buttonClick += 2;
     skills(buttonClick);
     toggleForBigScreen();
   }
@@ -169,6 +155,161 @@ if (prevBtn && nextBtn) {
       buttonClick -= 2;
       skills(buttonClick);
       toggleForBigScreen();
+    });
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+let buttonCount = 0;
+
+function projects(countClick) {
+  let count = countClick;
+  console.log(count);
+  if (countClick > projectData.length) count = projectData.length;
+
+  const htmlArray = Array.from({ length: count }).map((_, num) => {
+    console.log(projectData[num]);
+
+    const html = `<div class="project-card">
+              <div class="project-image">
+                <img
+                  src=${projectData[num].src}
+                  alt=${projectData[num].alt}
+                />
+              </div>
+              <div class="project-info">
+                <h3>${projectData[num].h3}</h3>
+                <p> ${projectData[num].p}</p>
+                <div class="project-tech">
+                  <span
+                    >${projectData[num].span1}
+                  </span>
+                  <span>${projectData[num].span2} </span>
+                  <span
+                    >${projectData[num].span3} </span
+                  >
+                  <span
+                    >${projectData[num].span4} </span
+                  >
+                </div>
+                <div class="project-links">
+                  <a
+                    href=${projectData[num].hrefDemo}
+                    class="btn btn-small"
+                    >Live Demo</a
+                  >
+                  <a
+                    href=${projectData[num].hrefCode}
+                    class="btn btn-small btn-outline"
+                    >Code</a
+                  >
+                </div>
+              </div>
+            </div>`;
+
+    //   const htmlContent = `<div class="skills-column">
+    // <h3>${keys}</h3>
+    // ${html.join(" ")}
+    // </div>`;
+
+    console.log("aaa", count - (num + 1));
+
+    if (screen.width <= 1012 && count - (num + 1) < 1) return html;
+    if (screen.width > 1012 && count - (num + 1) < 2) return html;
+  });
+
+  projectContent.innerHTML = htmlArray.join(" ");
+
+  console.log(skillsContent);
+  console.log(screen.width);
+  console.log(window.innerWidth);
+}
+
+function toggleForSmallScreenForProject() {
+  if (buttonCount >= projectData.length) {
+    nextProjectBtn.style.opacity = 0;
+    nextProjectBtn.disabled = true;
+  }
+  if (buttonCount < projectData.length) {
+    nextProjectBtn.style.opacity = 1;
+    nextProjectBtn.disabled = false;
+  }
+  if (buttonCount <= 1) {
+    prevProjectBtn.style.opacity = 0;
+    prevProjectBtn.disabled = true;
+  }
+  if (buttonCount > 1) {
+    prevProjectBtn.style.opacity = 1;
+    prevProjectBtn.disabled = false;
+  }
+}
+
+function toggleForBigScreenForProject() {
+  console.log(buttonCount, projectData.length);
+  if (buttonCount + 1 >= projectData.length) {
+    nextProjectBtn.style.opacity = 0;
+    nextProjectBtn.disabled = true;
+  }
+
+  if (buttonCount < projectData.length) {
+    nextProjectBtn.style.opacity = 1;
+    nextProjectBtn.disabled = false;
+  }
+  if (buttonCount <= 2) {
+    prevProjectBtn.style.opacity = 0;
+    prevProjectBtn.disabled = true;
+  }
+  if (buttonCount > 2) {
+    prevProjectBtn.style.opacity = 1;
+    prevProjectBtn.disabled = false;
+  }
+}
+
+(() => {
+  if (screen.width <= 1012) {
+    console.log("CC");
+    buttonCount++;
+    projects(buttonCount);
+    toggleForSmallScreenForProject();
+  }
+})();
+
+(() => {
+  if (screen.width > 1012) {
+    console.log("DD");
+    buttonCount += 2;
+    projects(buttonCount);
+    toggleForBigScreenForProject();
+  }
+})();
+
+if (prevProjectBtn && nextProjectBtn) {
+  if (screen.width <= 1012) {
+    nextProjectBtn.addEventListener("click", () => {
+      buttonCount++;
+      projects(buttonCount);
+      toggleForSmallScreenForProject();
+    });
+
+    prevProjectBtn.addEventListener("click", () => {
+      buttonCount--;
+      projects(buttonCount);
+      toggleForSmallScreenForProject();
+    });
+  }
+
+  if (screen.width > 1012) {
+    nextProjectBtn.addEventListener("click", () => {
+      buttonCount += 2;
+      projects(buttonCount);
+      toggleForBigScreenForProject();
+    });
+
+    prevProjectBtn.addEventListener("click", () => {
+      buttonCount -= 2;
+      projects(buttonCount);
+      toggleForBigScreenForProject();
     });
   }
 }
