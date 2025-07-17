@@ -56,10 +56,10 @@ function skills(countClick) {
   ${html.join(" ")}
   </div>`;
 
-    if (window.innerWidth <= 992 && count - (num + 1) < 1) return htmlContent;
-    if (window.innerWidth > 992 && count - (num + 1) < 2) return htmlContent;
-    // if (screen.width <= 992 && count - (num + 1) < 1) return htmlContent;
-    // if (screen.width > 992 && count - (num + 1) < 2) return htmlContent;
+    // if (window.innerWidth <= 992 && count - (num + 1) < 1) return htmlContent;
+    // if (window.innerWidth > 992 && count - (num + 1) < 2) return htmlContent;
+    if (screen.width <= 992 && count - (num + 1) < 1) return htmlContent;
+    if (screen.width > 992 && count - (num + 1) < 2) return htmlContent;
   });
 
   skillsContent.innerHTML = htmlArray.join(" ");
@@ -105,8 +105,8 @@ function toggleForBigScreen() {
 }
 
 (() => {
-  if (window.innerWidth <= 992) {
-    // if (screen.width <= 992) {
+  // if (window.innerWidth <= 992) {
+  if (screen.width <= 992) {
     buttonClick++;
     skills(buttonClick);
     toggleForSmallScreen();
@@ -114,8 +114,8 @@ function toggleForBigScreen() {
 })();
 
 (() => {
-  if (window.innerWidth > 992) {
-    // if (screen.width > 992) {
+  // if (window.innerWidth > 992) {
+  if (screen.width > 992) {
     buttonClick += 2;
     skills(buttonClick);
     toggleForBigScreen();
@@ -123,8 +123,8 @@ function toggleForBigScreen() {
 })();
 
 if (prevBtn && nextBtn) {
-  if (window.innerWidth <= 992) {
-    // if (screen.width <= 992) {
+  // if (window.innerWidth <= 992) {
+  if (screen.width <= 992) {
     nextBtn.addEventListener("click", () => {
       buttonClick++;
       skills(buttonClick);
@@ -138,8 +138,8 @@ if (prevBtn && nextBtn) {
     });
   }
 
-  if (window.innerWidth > 992) {
-    // if (screen.width > 992) {
+  // if (window.innerWidth > 992) {
+  if (screen.width > 992) {
     nextBtn.addEventListener("click", () => {
       buttonClick += 2;
       skills(buttonClick);
@@ -200,10 +200,10 @@ function projects(countClick) {
               </div>
             </div>`;
 
-    if (window.innerWidth <= 1012 && count - (num + 1) < 1) return html;
-    if (window.innerWidth > 1012 && count - (num + 1) < 2) return html;
-    // if (screen.width <= 1012 && count - (num + 1) < 1) return html;
-    // if (screen.width > 1012 && count - (num + 1) < 2) return html;
+    // if (window.innerWidth <= 1012 && count - (num + 1) < 1) return html;
+    // if (window.innerWidth > 1012 && count - (num + 1) < 2) return html;
+    if (screen.width <= 1012 && count - (num + 1) < 1) return html;
+    if (screen.width > 1012 && count - (num + 1) < 2) return html;
   });
 
   projectContent.innerHTML = htmlArray.join(" ");
@@ -249,8 +249,8 @@ function toggleForBigScreenForProject() {
 }
 
 (() => {
-  if (window.innerWidth <= 1012) {
-    // if (screen.width <= 1012) {
+  // if (window.innerWidth <= 1012) {
+  if (screen.width <= 1012) {
     buttonCount++;
     projects(buttonCount);
     toggleForSmallScreenForProject();
@@ -258,8 +258,8 @@ function toggleForBigScreenForProject() {
 })();
 
 (() => {
-  if (window.innerWidth > 1012) {
-    // if (screen.width > 1012) {
+  // if (window.innerWidth > 1012) {
+  if (screen.width > 1012) {
     buttonCount += 2;
     projects(buttonCount);
     toggleForBigScreenForProject();
@@ -267,8 +267,8 @@ function toggleForBigScreenForProject() {
 })();
 
 if (prevProjectBtn && nextProjectBtn) {
-  if (window.innerWidth <= 1012) {
-    // if (screen.width <= 1012) {
+  // if (window.innerWidth <= 1012) {
+  if (screen.width <= 1012) {
     nextProjectBtn.addEventListener("click", () => {
       buttonCount++;
       projects(buttonCount);
@@ -282,8 +282,8 @@ if (prevProjectBtn && nextProjectBtn) {
     });
   }
 
-  if (window.innerWidth > 1012) {
-    // if (screen.width > 1012) {
+  // if (window.innerWidth > 1012) {
+  if (screen.width > 1012) {
     nextProjectBtn.addEventListener("click", () => {
       buttonCount += 2;
       projects(buttonCount);
