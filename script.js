@@ -34,11 +34,9 @@ let buttonClick = 0;
 
 function skills(countClick) {
   let count = countClick;
-  console.log(count);
   if (countClick > skillsData.length) count = skillsData.length;
 
   const htmlArray = Array.from({ length: count }).map((_, num) => {
-    console.log(Object.entries(skillsData[num]).flat(1));
     const [keys, values] = Object.entries(skillsData[num]).flat(1);
 
     const html = values.map(
@@ -58,17 +56,13 @@ function skills(countClick) {
   ${html.join(" ")}
   </div>`;
 
-    console.log("aaa", count - (num + 1));
-
-    if (screen.width <= 992 && count - (num + 1) < 1) return htmlContent;
-    if (screen.width > 992 && count - (num + 1) < 2) return htmlContent;
+    if (window.innerWidth <= 992 && count - (num + 1) < 1) return htmlContent;
+    if (window.innerWidth > 992 && count - (num + 1) < 2) return htmlContent;
+    // if (screen.width <= 992 && count - (num + 1) < 1) return htmlContent;
+    // if (screen.width > 992 && count - (num + 1) < 2) return htmlContent;
   });
 
   skillsContent.innerHTML = htmlArray.join(" ");
-
-  console.log(skillsContent);
-  console.log(screen.width);
-  console.log(window.innerWidth);
 }
 
 function toggleForSmallScreen() {
@@ -91,7 +85,6 @@ function toggleForSmallScreen() {
 }
 
 function toggleForBigScreen() {
-  console.log(buttonClick, skillsData.length);
   if (buttonClick + 1 >= skillsData.length) {
     nextBtn.style.opacity = 0;
     nextBtn.disabled = true;
@@ -112,8 +105,8 @@ function toggleForBigScreen() {
 }
 
 (() => {
-  if (screen.width <= 992) {
-    console.log("AA");
+  if (window.innerWidth <= 992) {
+    // if (screen.width <= 992) {
     buttonClick++;
     skills(buttonClick);
     toggleForSmallScreen();
@@ -121,8 +114,8 @@ function toggleForBigScreen() {
 })();
 
 (() => {
-  if (screen.width > 992) {
-    console.log("BB");
+  if (window.innerWidth > 992) {
+    // if (screen.width > 992) {
     buttonClick += 2;
     skills(buttonClick);
     toggleForBigScreen();
@@ -130,7 +123,8 @@ function toggleForBigScreen() {
 })();
 
 if (prevBtn && nextBtn) {
-  if (screen.width <= 992) {
+  if (window.innerWidth <= 992) {
+    // if (screen.width <= 992) {
     nextBtn.addEventListener("click", () => {
       buttonClick++;
       skills(buttonClick);
@@ -144,7 +138,8 @@ if (prevBtn && nextBtn) {
     });
   }
 
-  if (screen.width > 992) {
+  if (window.innerWidth > 992) {
+    // if (screen.width > 992) {
     nextBtn.addEventListener("click", () => {
       buttonClick += 2;
       skills(buttonClick);
@@ -165,12 +160,9 @@ let buttonCount = 0;
 
 function projects(countClick) {
   let count = countClick;
-  console.log(count);
   if (countClick > projectData.length) count = projectData.length;
 
   const htmlArray = Array.from({ length: count }).map((_, num) => {
-    console.log(projectData[num]);
-
     const html = `<div class="project-card">
               <div class="project-image">
                 <img
@@ -208,22 +200,13 @@ function projects(countClick) {
               </div>
             </div>`;
 
-    //   const htmlContent = `<div class="skills-column">
-    // <h3>${keys}</h3>
-    // ${html.join(" ")}
-    // </div>`;
-
-    console.log("aaa", count - (num + 1));
-
-    if (screen.width <= 1012 && count - (num + 1) < 1) return html;
-    if (screen.width > 1012 && count - (num + 1) < 2) return html;
+    if (window.innerWidth <= 1012 && count - (num + 1) < 1) return html;
+    if (window.innerWidth > 1012 && count - (num + 1) < 2) return html;
+    // if (screen.width <= 1012 && count - (num + 1) < 1) return html;
+    // if (screen.width > 1012 && count - (num + 1) < 2) return html;
   });
 
   projectContent.innerHTML = htmlArray.join(" ");
-
-  console.log(skillsContent);
-  console.log(screen.width);
-  console.log(window.innerWidth);
 }
 
 function toggleForSmallScreenForProject() {
@@ -246,7 +229,6 @@ function toggleForSmallScreenForProject() {
 }
 
 function toggleForBigScreenForProject() {
-  console.log(buttonCount, projectData.length);
   if (buttonCount + 1 >= projectData.length) {
     nextProjectBtn.style.opacity = 0;
     nextProjectBtn.disabled = true;
@@ -267,8 +249,8 @@ function toggleForBigScreenForProject() {
 }
 
 (() => {
-  if (screen.width <= 1012) {
-    console.log("CC");
+  if (window.innerWidth <= 1012) {
+    // if (screen.width <= 1012) {
     buttonCount++;
     projects(buttonCount);
     toggleForSmallScreenForProject();
@@ -276,8 +258,8 @@ function toggleForBigScreenForProject() {
 })();
 
 (() => {
-  if (screen.width > 1012) {
-    console.log("DD");
+  if (window.innerWidth > 1012) {
+    // if (screen.width > 1012) {
     buttonCount += 2;
     projects(buttonCount);
     toggleForBigScreenForProject();
@@ -285,7 +267,8 @@ function toggleForBigScreenForProject() {
 })();
 
 if (prevProjectBtn && nextProjectBtn) {
-  if (screen.width <= 1012) {
+  if (window.innerWidth <= 1012) {
+    // if (screen.width <= 1012) {
     nextProjectBtn.addEventListener("click", () => {
       buttonCount++;
       projects(buttonCount);
@@ -299,7 +282,8 @@ if (prevProjectBtn && nextProjectBtn) {
     });
   }
 
-  if (screen.width > 1012) {
+  if (window.innerWidth > 1012) {
+    // if (screen.width > 1012) {
     nextProjectBtn.addEventListener("click", () => {
       buttonCount += 2;
       projects(buttonCount);
