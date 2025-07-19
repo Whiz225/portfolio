@@ -15,6 +15,7 @@ export const skillsData = [
   {
     Backend: [
       { skill: "Node.js", percent: 85 },
+      { skill: "NestJS", percent: 85 },
       { skill: "Express.js", percent: 85 },
       { skill: "RESTful APIs", percent: 90 },
     ],

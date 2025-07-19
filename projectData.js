@@ -1,6 +1,20 @@
 /////////////////////////////////////////////////////////////////////////////
 export const projectData = [
   {
+    // src: `https://booking-app-v2.onrender.com/logo-dark.png`,
+    src: `/logo-green-round.png`,
+    alt: "Dev Blog Platform",
+    h3: " A community for developers to share knowledge and grow together. (FullStack APP)",
+    p: "A portfolio project to demonstrate my fullstack skills.",
+    span1: "Tech stack: Next.js (App Router), Tailwind, React Query",
+    span2: "Database: MongoDB (Atlas) with Mongoose",
+    span3: "Dev Tools: Nodemon, dotenv, Postman, ESLint, Prettier",
+    span4:
+      "Protected routes, dynamic metadata, and image optimization with Next.js",
+    hrefDemo: "https://dev-blog-frontend-v1-Kruh.vercel.app",
+    hrefCode: "https://github.com/Whiz225/dev-blog-frontend-v1",
+  },
+  {
     src: `https://booking-app-v2.onrender.com/logo-dark.png`,
     alt: "Tour Booking Platform",
     h3: "A Cabin Booking Website for Guest (FullStack APP)",
