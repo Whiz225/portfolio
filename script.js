@@ -1,13 +1,10 @@
 import { projectData } from "./projectData.js";
-import { skillsData } from "./skillsData.js";
+// import { skillsData } from "./skillsData.js";
 
 // Mobile Navigation
 const hamburger = document.querySelector(".hamburger");
 const navLinks = document.querySelector(".nav-links");
 const links = document.querySelectorAll(".nav-links li");
-const skillsContent = document.querySelector(".skills-content");
-const prevBtn = document.querySelector(".btn-scrow-prev");
-const nextBtn = document.querySelector(".btn-scrow-next");
 const projectContent = document.querySelector(".projects-grid");
 const prevProjectBtn = document.querySelector(".btn-project-prev");
 const nextProjectBtn = document.querySelector(".btn-project-next");
@@ -23,136 +20,6 @@ links.forEach((link) => {
     hamburger.classList.remove("active");
   });
 });
-
-// Sticky Header
-window.addEventListener("scroll", () => {
-  const header = document.querySelector("header");
-  header.classList.toggle("scrolled", window.scrollY > 0);
-});
-
-let buttonClick = 0;
-
-function skills(countClick) {
-  let count = countClick;
-  if (countClick > skillsData.length) count = skillsData.length;
-
-  const htmlArray = Array.from({ length: count }).map((_, num) => {
-    const [keys, values] = Object.entries(skillsData[num]).flat(1);
-
-    const html = values.map(
-      (el) => `<div class="skill-item">
-      <div class="skill-info">
-      <span>${el.skill}</span>
-      <span>${el.percent}%</span>
-      </div>
-      <div class="progress-bar">
-      <div class="progress" style="width: ${el.percent}%"></div>
-      </div>
-      </div>`
-    );
-
-    const htmlContent = `<div class="skills-column">
-  <h3>${keys}</h3>
-  ${html.join(" ")}
-  </div>`;
-
-    // if (window.innerWidth <= 992 && count - (num + 1) < 1) return htmlContent;
-    // if (window.innerWidth > 992 && count - (num + 1) < 2) return htmlContent;
-    if (screen.width <= 992 && count - (num + 1) < 1) return htmlContent;
-    if (screen.width > 992 && count - (num + 1) < 2) return htmlContent;
-  });
-
-  skillsContent.innerHTML = htmlArray.join(" ");
-}
-
-function toggleForSmallScreen() {
-  if (buttonClick >= skillsData.length) {
-    nextBtn.style.opacity = 0;
-    nextBtn.disabled = true;
-  }
-  if (buttonClick < skillsData.length) {
-    nextBtn.style.opacity = 1;
-    nextBtn.disabled = false;
-  }
-  if (buttonClick <= 1) {
-    prevBtn.style.opacity = 0;
-    prevBtn.disabled = true;
-  }
-  if (buttonClick > 1) {
-    prevBtn.style.opacity = 1;
-    prevBtn.disabled = false;
-  }
-}
-
-function toggleForBigScreen() {
-  if (buttonClick + 1 >= skillsData.length) {
-    nextBtn.style.opacity = 0;
-    nextBtn.disabled = true;
-  }
-
-  if (buttonClick < skillsData.length) {
-    nextBtn.style.opacity = 1;
-    nextBtn.disabled = false;
-  }
-  if (buttonClick <= 2) {
-    prevBtn.style.opacity = 0;
-    prevBtn.disabled = true;
-  }
-  if (buttonClick > 2) {
-    prevBtn.style.opacity = 1;
-    prevBtn.disabled = false;
-  }
-}
-
-(() => {
-  // if (window.innerWidth <= 992) {
-  if (screen.width <= 992) {
-    buttonClick++;
-    skills(buttonClick);
-    toggleForSmallScreen();
-  }
-})();
-
-(() => {
-  // if (window.innerWidth > 992) {
-  if (screen.width > 992) {
-    buttonClick += 2;
-    skills(buttonClick);
-    toggleForBigScreen();
-  }
-})();
-
-if (prevBtn && nextBtn) {
-  // if (window.innerWidth <= 992) {
-  if (screen.width <= 992) {
-    nextBtn.addEventListener("click", () => {
-      buttonClick++;
-      skills(buttonClick);
-      toggleForSmallScreen();
-    });
-
-    prevBtn.addEventListener("click", () => {
-      buttonClick--;
-      skills(buttonClick);
-      toggleForSmallScreen();
-    });
-  }
-
-  // if (window.innerWidth > 992) {
-  if (screen.width > 992) {
-    nextBtn.addEventListener("click", () => {
-      buttonClick += 2;
-      skills(buttonClick);
-      toggleForBigScreen();
-    });
-
-    prevBtn.addEventListener("click", () => {
-      buttonClick -= 2;
-      skills(buttonClick);
-      toggleForBigScreen();
-    });
-  }
-}
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 
@@ -315,36 +182,6 @@ if (prevProjectBtn && nextProjectBtn) {
 //   });
 // });
 
-// Animate Skills Progress Bars on Scroll
-const skillItems = document.querySelectorAll(".skill-item");
-
-function animateSkills() {
-  skillItems.forEach((item) => {
-    const progress = item.querySelector(".progress");
-    const percent = item.querySelector(
-      ".skill-info span:last-child"
-    ).textContent;
-    progress.style.width = percent;
-  });
-}
-
-// Only animate when skills section is in view
-const skillsSection = document.querySelector(".skills");
-const options = {
-  threshold: 0.2,
-};
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      animateSkills();
-      observer.unobserve(entry.target);
-    }
-  });
-}, options);
-
-observer.observe(skillsSection);
-
 // Form Submission
 // const contactForm = document.querySelector(".contact-form");
 
@@ -373,3 +210,73 @@ observer.observe(skillsSection);
 const year = new Date().getFullYear();
 document.querySelector("footer p").textContent =
   "© 2025 Nwosu Emmanuel. All rights reserved.";
+
+//////////////////////////////
+// Skills section animation
+const skillItems = document.querySelectorAll(".skill-item");
+
+// Function to animate skills sequentially
+function animateSkills() {
+  skillItems.forEach((item, index) => {
+    setTimeout(() => {
+      item.classList.add("animate");
+    }, index * 100); // 100ms delay between each item
+  });
+}
+
+// Intersection Observer to trigger animation when section is in view
+const skillsObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        animateSkills();
+        skillsObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.1 }
+);
+
+// Observe the skills section
+const skillsSection = document.querySelector("#skills");
+if (skillsSection) {
+  skillsObserver.observe(skillsSection);
+}
+
+// Enhanced hover effect with GSAP (if you're using GSAP)
+if (typeof gsap !== "undefined") {
+  skillItems.forEach((item) => {
+    const icon = item.querySelector(".skill-icon");
+    const text = item.querySelector("h5");
+
+    item.addEventListener("mouseenter", () => {
+      gsap.to(icon, {
+        y: -10,
+        scale: 1.1,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+      gsap.to(text, {
+        opacity: 1,
+        y: 10,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    });
+
+    item.addEventListener("mouseleave", () => {
+      gsap.to(icon, {
+        y: 0,
+        scale: 1,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+      gsap.to(text, {
+        opacity: 0,
+        y: 0,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    });
+  });
+}
