@@ -54,14 +54,14 @@ function projects(countClick) {
                 </div>
                 <div class="project-links">
                   <a
-                    href=${projectData[num].hrefDemo}
+                    href=${projectData[num].hrefVideo}
                     class="btn btn-small"
                     >Live Demo</a
                   >
                   <a
-                    href=${projectData[num].hrefCode}
+                    href=${projectData[num].hrefUrl}
                     class="btn btn-small btn-outline"
-                    >Code</a
+                    >Link</a
                   >
                 </div>
               </div>
