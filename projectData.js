@@ -75,8 +75,8 @@ export const projectData = [
     h3: "F-MetaChat Platform App (Fullstack App)",
     p: "A portfolio project to demonstrate my fullstack skills.",
     span1:
-      "Frontend: HTML, CSS (Sass), Pug (templating engine), client-side JS",
-    span2: "Backend: MERNS Stacks, Tailwin CSS, RESTful APIs",
+      "Frontend: Next.js, JavaScript, Tailwind CSS, WebRTC, WebSocket, React Query, Context API, E2EE Data-Encryption",
+    span2: "Backend: MERNS Stacks, Redis, JWT, RESTful APIs",
     span3: "Database: MongoDB with Mongoose ORM",
     span4: "Security: Helmet, Rate limiting, Data sanitization, etc",
     hrefUrl: "https://f-meta-chat.vercel.app/auth/login",
