@@ -13,7 +13,8 @@ export const projectData = [
       "Protected routes, dynamic metadata, and image optimization with Next.js",
     hrefUrl: "https://booking-app-v1-website.vercel.app",
     hrefVideo:
-      "https://res.cloudinary.com/domwk7od1/video/upload/v1767299800/Hotel_Reservations_Platform_Video_a6zu7i.mp4",
+      "https://res.cloudinary.com/domwk7od1/video/upload/v1767955667/Hotel_Reservations_video_edit_hnt46x.mp4",
+    // "https://res.cloudinary.com/domwk7od1/video/upload/v1767299800/Hotel_Reservations_Platform_Video_a6zu7i.mp4",
   },
 
   {
@@ -29,7 +30,8 @@ export const projectData = [
       "Protected routes, dynamic metadata, and image optimization with Next.js",
     hrefUrl: "https://whiz225.github.io/Booking-App/",
     hrefVideo:
-      "https://res.cloudinary.com/domwk7od1/video/upload/v1767299160/Hotel_Management_App_Video_vh4nbr.mp4",
+      "https://res.cloudinary.com/domwk7od1/video/upload/v1767955511/Hotel_management_video_edit_zxzibr.mp4",
+    // "https://res.cloudinary.com/domwk7od1/video/upload/v1767299160/Hotel_Management_App_Video_vh4nbr.mp4",
   },
   {
     src: "https://res.cloudinary.com/domwk7od1/image/upload/v1767300295/Screenshot_2025-12-30-22-26-27-90_40deb401b9ffe8e1df2f1cc5ba480b12_f958mp.jpg",
@@ -81,7 +83,8 @@ export const projectData = [
     span4: "Security: Helmet, Rate limiting, Data sanitization, etc",
     hrefUrl: "https://f-meta-chat.vercel.app/auth/login",
     hrefVideo:
-      "https://res.cloudinary.com/domwk7od1/video/upload/v1767300525/F-metaChat_video_jpwiym.mp4",
+      "https://res.cloudinary.com/domwk7od1/video/upload/v1767955527/F-metaChat_video_edit_ugzbgf.mp4",
+    // "https://res.cloudinary.com/domwk7od1/video/upload/v1767300525/F-metaChat_video_jpwiym.mp4",
   },
 ];
 
