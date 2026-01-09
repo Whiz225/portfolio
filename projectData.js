@@ -44,7 +44,8 @@ export const projectData = [
     span4: "APIs: PositionStack (for geocoding), REST endpoints",
     hrefUrl: "https://worldwise-app-q75x.onrender.com",
     hrefVideo:
-      "https://res.cloudinary.com/domwk7od1/video/upload/v1767300390/Worldwise_App_video_gbiteu.mp4",
+    "https://res.cloudinary.com/domwk7od1/video/upload/v1767961669/Travel_tracking_App_Edit_cadzln.mp4",
+      // "https://res.cloudinary.com/domwk7od1/video/upload/v1767300390/Worldwise_App_video_gbiteu.mp4",
   },
   {
     src: "https://res.cloudinary.com/domwk7od1/image/upload/v1767300293/Screenshot_2026-01-01-20-46-51-91_40deb401b9ffe8e1df2f1cc5ba480b12_bidkzb.jpg",
@@ -57,7 +58,8 @@ export const projectData = [
     span4: "Router: React Router",
     hrefUrl: "https://fast-react-pizza-dxho.onrender.com",
     hrefVideo:
-      "https://res.cloudinary.com/domwk7od1/video/upload/v1767300282/Pizza_menu_video_l5zeyn.mp4",
+    "https://res.cloudinary.com/domwk7od1/video/upload/v1767961661/Pizza_App_Edit_rkhd1r.mp4",
+      // "https://res.cloudinary.com/domwk7od1/video/upload/v1767300282/Pizza_menu_video_l5zeyn.mp4",
   },
   // {
   //   src: `https://booking-app-v2.onrender.com/logo-dark.png`,
